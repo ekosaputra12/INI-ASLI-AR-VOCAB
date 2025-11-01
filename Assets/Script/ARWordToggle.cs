@@ -13,7 +13,7 @@ public class ARWordToggle : MonoBehaviour
 
     [Header("Referensi")]
     public TextMeshProUGUI textDisplay;
-    public Transform targetObject; // objek 3D yang ingin di-zoom dan rotate
+    public Transform targetObject;
 
     [Header("Zoom & Rotate Settings")]
     public float zoomSpeed = 0.5f;
@@ -28,6 +28,10 @@ public class ARWordToggle : MonoBehaviour
     private Quaternion initialRotation;
     private Vector3 targetScale;
     private Quaternion targetRotation;
+
+    // 🟢 Tambahan
+    public MascotUIManager_Fade mascotUIManager; // drag dari inspector
+    private bool hasRotated = false;
 
     void Start()
     {
@@ -50,42 +54,16 @@ public class ARWordToggle : MonoBehaviour
 
         if (enableSmooth && targetObject)
         {
-            // Smooth transition
             targetObject.localScale = Vector3.Lerp(targetObject.localScale, targetScale, Time.deltaTime * smoothSpeed);
             targetObject.rotation = Quaternion.Lerp(targetObject.rotation, targetRotation, Time.deltaTime * smoothSpeed);
         }
     }
 
-    // ========================
-    // 🔠 Toggle Bahasa
-    // ========================
-    public void ToggleLanguage()
-    {
-        showingEnglish = !showingEnglish;
-        if (textDisplay)
-            textDisplay.text = showingEnglish ? englishWord : indoWord;
-    }
-
-    // ========================
-    // 🔊 Play Audio
-    // ========================
-    public void PlayAudio()
-    {
-        AudioClip clipToPlay = showingEnglish ? englishAudio : indoAudio;
-        if (clipToPlay != null)
-            AudioSource.PlayClipAtPoint(clipToPlay, Camera.main.transform.position);
-    }
-
-    // ========================
-    // 🔍 Zoom In / Out
-    // ========================
     private void HandleZoom()
     {
         if (!targetObject) return;
-
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        // Untuk mobile (pinch gesture)
         if (Input.touchCount == 2)
         {
             Touch t0 = Input.GetTouch(0);
@@ -108,12 +86,11 @@ public class ARWordToggle : MonoBehaviour
         }
     }
 
-    // ========================
-    // 🔄 Rotate Objek
-    // ========================
     private void HandleRotate()
     {
         if (!targetObject) return;
+
+        bool rotated = false;
 
         // Mouse drag
         if (Input.GetMouseButton(0))
@@ -121,6 +98,7 @@ public class ARWordToggle : MonoBehaviour
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float rotY = -Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
             targetRotation *= Quaternion.Euler(rotY, -rotX, 0);
+            rotated = Mathf.Abs(rotX) > 0.01f || Mathf.Abs(rotY) > 0.01f;
         }
 
         // Mobile drag
@@ -132,17 +110,47 @@ public class ARWordToggle : MonoBehaviour
                 float rotX = t.deltaPosition.x * rotationSpeed * 0.01f * Time.deltaTime;
                 float rotY = -t.deltaPosition.y * rotationSpeed * 0.01f * Time.deltaTime;
                 targetRotation *= Quaternion.Euler(rotY, -rotX, 0);
+                rotated = true;
+            }
+        }
+
+        // ✅ Kalau sudah pernah di-rotate sekali saja
+        if (rotated && !hasRotated)
+        {
+            hasRotated = true;
+            Debug.Log("✅ Objek sudah di-rotate — panggil maskot ke-3");
+
+            if (mascotUIManager != null)
+            {
+                mascotUIManager.OnObjectRotated();
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ mascotUIManager belum di-assign di inspector!");
             }
         }
     }
 
-    // ========================
-    // 🔁 Reset posisi & skala
-    // ========================
+
+    public void ToggleLanguage()
+    {
+        showingEnglish = !showingEnglish;
+        if (textDisplay)
+            textDisplay.text = showingEnglish ? englishWord : indoWord;
+    }
+
+    public void PlayAudio()
+    {
+        AudioClip clipToPlay = showingEnglish ? englishAudio : indoAudio;
+        if (clipToPlay != null)
+            AudioSource.PlayClipAtPoint(clipToPlay, Camera.main.transform.position);
+    }
+
     public void ResetTransform()
     {
         if (!targetObject) return;
         targetScale = initialScale;
         targetRotation = initialRotation;
+        hasRotated = false;
     }
 }

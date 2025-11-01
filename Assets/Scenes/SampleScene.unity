@@ -119,6 +119,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &53287883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53287885}
+  - component: {fileID: 53287884}
+  m_Layer: 0
+  m_Name: 'MascotUIManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &53287884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53287883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434f6aa3d6c42d640887327fda19bd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MascotUIController
+  maskotScanPanel: {fileID: 966912039}
+  maskotRotatePanel: {fileID: 1333145382}
+  maskotTranslatePanel: {fileID: 213014730}
+  buttonPanel: {fileID: 707976347}
+  mainPanel: {fileID: 1287113330}
+  fadeDuration: 1
+  waitBetweenPanels: 1.2
+--- !u!4 &53287885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53287883}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3216.3608, y: 0, z: 38564.957}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213014726
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,13 +181,14 @@ GameObject:
   - component: {fileID: 213014727}
   - component: {fileID: 213014729}
   - component: {fileID: 213014728}
+  - component: {fileID: 213014730}
   m_Layer: 5
   m_Name: TranslatePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &213014727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -195,6 +247,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213014726}
   m_CullTransparentMesh: 1
+--- !u!225 &213014730
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213014726}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &362383772
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +316,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: '"Kamu bisa rotate dan zoom objek ini!"
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -607,7 +673,7 @@ RectTransform:
   m_GameObject: {fileID: 643595507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.019308746, y: 0.019308746, z: 0.019308746}
+  m_LocalScale: {x: 0.028918108, y: 0.028918108, z: 0.028918108}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1773807458}
@@ -615,7 +681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 12.357597, y: 6.3796096}
+  m_AnchoredPosition: {x: 18.4, y: 9.8}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643595509
@@ -1080,7 +1146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Mantap! Sekarang lihat nama bendanya ya!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1170,6 +1236,7 @@ GameObject:
   - component: {fileID: 966912036}
   - component: {fileID: 966912038}
   - component: {fileID: 966912037}
+  - component: {fileID: 966912039}
   m_Layer: 5
   m_Name: MaskotPanel
   m_TagString: Untagged
@@ -1235,6 +1302,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966912035}
   m_CullTransparentMesh: 1
+--- !u!225 &966912039
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966912035}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1046471235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1371,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: '"Ayo scan dulu objeknya!"
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1589,7 +1670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1287113331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1661,13 +1742,14 @@ GameObject:
   - component: {fileID: 1333145379}
   - component: {fileID: 1333145381}
   - component: {fileID: 1333145380}
+  - component: {fileID: 1333145382}
   m_Layer: 5
   m_Name: RotateZoomPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1333145379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1726,6 +1808,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333145378}
   m_CullTransparentMesh: 1
+--- !u!225 &1333145382
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333145378}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1437859586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 444, y: 145}
+  m_AnchoredPosition: {x: 759, y: 384}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1707627222
@@ -2235,7 +2329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 475, y: -53}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1773807455
@@ -2584,7 +2678,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   OnTargetFound:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 53287884}
+        m_TargetAssemblyTypeName: MascotUIManager, Assembly-CSharp
+        m_MethodName: OnTargetFound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTargetLost:
     m_PersistentCalls:
       m_Calls: []
@@ -2652,9 +2758,10 @@ MonoBehaviour:
   zoomSpeed: 0.5
   minZoom: 0.3
   maxZoom: 2
-  rotationSpeed: 100
+  rotationSpeed: 1604
   enableSmooth: 1
   smoothSpeed: 10
+  mascotUIManager: {fileID: 53287884}
 --- !u!114 &2094866225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2683,3 +2790,4 @@ SceneRoots:
   - {fileID: 2094866223}
   - {fileID: 1707627226}
   - {fileID: 1180752747}
+  - {fileID: 53287885}
