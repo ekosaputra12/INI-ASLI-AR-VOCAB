@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="images" size="100.000000 100.000000" />
+    <ImageTarget name="jenis-jenis-kucing-peliharaan-12" size="100.000000 100.000000" />
+  </Tracking>
+</QCARConfig>
