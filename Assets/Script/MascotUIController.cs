@@ -4,33 +4,43 @@ using System.Collections;
 public class MascotUIManager_Fade : MonoBehaviour
 {
     [Header("UI Panels (Maskot)")]
-    public CanvasGroup maskotScanPanel;      // “Ayo scan dulu objeknya!”
-    public CanvasGroup maskotRotatePanel;    // “Kamu bisa rotate dan zoom objek ini!”
-    public CanvasGroup maskotTranslatePanel; // “Klik tombol Translate & Sound...”
+    public CanvasGroup maskotScanPanel;         // “Ayo scan dulu objeknya!”
+    public CanvasGroup maskotScannedPanel;      // “Nah, kamu sudah ngescan!”
+    public CanvasGroup maskotRotatePanel;       // “Coba putar objeknya 🔄”
+    public CanvasGroup maskotRotatedPanel;      // 🆕 “Keren! Kamu sudah memutar objeknya 🎉”
+    public CanvasGroup maskotTranslatePanel;    // “Klik tombol Translate & Sound...”
+    public CanvasGroup maskotAngryPanel;        // 😡 “Kok belum juga di-scan?!”
 
     [Header("Panel Tombol Translate & Audio")]
-    public GameObject buttonPanel;           // Panel tombol
+    public GameObject buttonPanel;              // Panel tombol
 
     [Header("Panel Utama (setelah maskot terakhir)")]
-    public GameObject mainPanel;             // Panel utama yang muncul di akhir
+    public GameObject mainPanel;                // Panel utama
 
     [Header("Fade Settings")]
     public float fadeDuration = 0.8f;
     public float waitBetweenPanels = 0.3f;
+    public float angryDelay = 8f;
+    public float scannedDisplayTime = 2f;
+    public float rotatedDisplayTime = 2f;       // 🆕 waktu tampil panel “Kamu sudah memutar!”
 
     private bool targetFound = false;
     private bool hasRotated = false;
 
     void Start()
     {
-        // Awal: hanya panel scan aktif
+        // Setup awal
         SetPanel(maskotScanPanel, true, 0);
+        SetPanel(maskotScannedPanel, false, 0);
         SetPanel(maskotRotatePanel, false, 0);
+        SetPanel(maskotRotatedPanel, false, 0);
         SetPanel(maskotTranslatePanel, false, 0);
+        SetPanel(maskotAngryPanel, false, 0);
         buttonPanel.SetActive(false);
         if (mainPanel) mainPanel.SetActive(false);
 
         StartCoroutine(FadeIn(maskotScanPanel));
+        StartCoroutine(WaitForAngryPanel());
     }
 
     void SetPanel(CanvasGroup panel, bool active, float alpha)
@@ -68,49 +78,65 @@ public class MascotUIManager_Fade : MonoBehaviour
         panel.gameObject.SetActive(false);
     }
 
-    // ✅ Dipanggil dari event Vuforia (saat target terdeteksi)
-    public void OnTargetFound()
+    IEnumerator WaitForAngryPanel()
     {
-        if (!targetFound)
-        {
-            targetFound = true;
-            StopAllCoroutines();
-            StartCoroutine(TransitionToRotatePanel());
-        }
+        yield return new WaitForSeconds(angryDelay);
+        if (targetFound) yield break;
+
+        yield return StartCoroutine(FadeOut(maskotScanPanel));
+        yield return new WaitForSeconds(0.2f);
+        yield return StartCoroutine(FadeIn(maskotAngryPanel));
     }
 
-    IEnumerator TransitionToRotatePanel()
+    public void OnTargetFound()
     {
-        // Hilangkan panel scan → tampilkan panel rotate
-        yield return StartCoroutine(FadeOut(maskotScanPanel));
+        if (targetFound) return;
+        targetFound = true;
+
+        StopAllCoroutines();
+        StartCoroutine(TransitionAfterScan());
+    }
+
+    IEnumerator TransitionAfterScan()
+    {
+        if (maskotScanPanel) yield return StartCoroutine(FadeOut(maskotScanPanel));
+        if (maskotAngryPanel) yield return StartCoroutine(FadeOut(maskotAngryPanel));
+
+        yield return new WaitForSeconds(waitBetweenPanels);
+        yield return StartCoroutine(FadeIn(maskotScannedPanel));
+        yield return new WaitForSeconds(scannedDisplayTime);
+        yield return StartCoroutine(FadeOut(maskotScannedPanel));
+
         yield return new WaitForSeconds(waitBetweenPanels);
         yield return StartCoroutine(FadeIn(maskotRotatePanel));
     }
 
-    // ✅ Dipanggil dari script rotasi (ketika user memutar objek)
     public void OnObjectRotated()
     {
-        if (!hasRotated)
-        {
-            hasRotated = true;
-            StopAllCoroutines();
-            StartCoroutine(TransitionToTranslatePanel());
-        }
+        if (hasRotated) return;
+        hasRotated = true;
+
+        StopAllCoroutines();
+        StartCoroutine(TransitionAfterRotated());
     }
 
-    IEnumerator TransitionToTranslatePanel()
+    IEnumerator TransitionAfterRotated()
     {
-        // Hilangkan panel rotate → tampilkan panel translate
         yield return StartCoroutine(FadeOut(maskotRotatePanel));
         yield return new WaitForSeconds(waitBetweenPanels);
+        yield return StartCoroutine(FadeIn(maskotRotatedPanel));
+
+        yield return new WaitForSeconds(rotatedDisplayTime);
+        yield return StartCoroutine(FadeOut(maskotRotatedPanel));
+
+        yield return new WaitForSeconds(waitBetweenPanels);
         yield return StartCoroutine(FadeIn(maskotTranslatePanel));
+
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(FadeOut(maskotTranslatePanel));
 
-        // Setelah selesai → tampilkan tombol translate & audio
         buttonPanel.SetActive(true);
 
-        // 🟢 Setelah tombol tampil → munculkan panel utama
         if (mainPanel != null)
         {
             yield return new WaitForSeconds(0.5f);
