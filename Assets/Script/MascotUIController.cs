@@ -7,7 +7,7 @@ public class MascotUIManager_Fade : MonoBehaviour
     public CanvasGroup maskotScanPanel;         // “Ayo scan dulu objeknya!”
     public CanvasGroup maskotScannedPanel;      // “Nah, kamu sudah ngescan!”
     public CanvasGroup maskotRotatePanel;       // “Coba putar objeknya 🔄”
-    public CanvasGroup maskotRotatedPanel;      // “Keren! Kamu sudah memutar objeknya 🎉”
+    public CanvasGroup maskotRotatedPanel;      // 🆕 “Keren! Kamu sudah memutar objeknya 🎉”
     public CanvasGroup maskotTranslatePanel;    // “Klik tombol Translate & Sound...”
     public CanvasGroup maskotAngryPanel;        // 😡 “Kok belum juga di-scan?!”
 
@@ -22,15 +22,14 @@ public class MascotUIManager_Fade : MonoBehaviour
     public float waitBetweenPanels = 0.3f;
     public float angryDelay = 8f;
     public float scannedDisplayTime = 2f;
-    public float rotatedDisplayTime = 2f;
-    public float afterMainPanelDelay = 2.5f;    // ⏳ waktu nunggu sebelum muncul maskot info tombol
-    public float infoPanelDisplayTime = 3f;     // ⏱️ durasi tampil maskot info tombol
+    public float rotatedDisplayTime = 2f;       // 🆕 waktu tampil panel “Kamu sudah memutar!”
 
     private bool targetFound = false;
     private bool hasRotated = false;
 
     void Start()
     {
+        // Setup awal
         SetPanel(maskotScanPanel, true, 0);
         SetPanel(maskotScannedPanel, false, 0);
         SetPanel(maskotRotatePanel, false, 0);
@@ -123,7 +122,6 @@ public class MascotUIManager_Fade : MonoBehaviour
 
     IEnumerator TransitionAfterRotated()
     {
-        // Setelah rotasi selesai
         yield return StartCoroutine(FadeOut(maskotRotatePanel));
         yield return new WaitForSeconds(waitBetweenPanels);
         yield return StartCoroutine(FadeIn(maskotRotatedPanel));
@@ -139,20 +137,10 @@ public class MascotUIManager_Fade : MonoBehaviour
 
         buttonPanel.SetActive(true);
 
-        // 🌟 Tampilkan panel utama
         if (mainPanel != null)
         {
             yield return new WaitForSeconds(0.5f);
             mainPanel.SetActive(true);
-        }
-
-        // 🆕 Setelah panel utama muncul → maskot muncul lagi sebentar untuk info tombol
-        yield return new WaitForSeconds(afterMainPanelDelay);
-        if (maskotTranslatePanel != null)
-        {
-            yield return StartCoroutine(FadeIn(maskotTranslatePanel));
-            yield return new WaitForSeconds(infoPanelDisplayTime);
-            yield return StartCoroutine(FadeOut(maskotTranslatePanel));
         }
     }
 }

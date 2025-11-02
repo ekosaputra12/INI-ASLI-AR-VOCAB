@@ -23,20 +23,21 @@ public class ARWordToggle : MonoBehaviour
     public bool enableSmooth = true;
     public float smoothSpeed = 10f;
 
-    private bool showingEnglish = false;
+    private bool showingEnglish = false; // mulai dari Indonesia
     private Vector3 initialScale;
     private Quaternion initialRotation;
     private Vector3 targetScale;
     private Quaternion targetRotation;
 
-    // 🟢 Tambahan
-    public MascotUIManager_Fade mascotUIManager; // drag dari inspector
+    [Header("Tambahan")]
+    public MascotUIManager_Fade mascotUIManager;
     private bool hasRotated = false;
 
     void Start()
     {
+        // ⛔ Tidak tampil teks di awal
         if (textDisplay)
-            textDisplay.text = indoWord;
+            textDisplay.text = "";
 
         if (targetObject)
         {
@@ -89,10 +90,8 @@ public class ARWordToggle : MonoBehaviour
     private void HandleRotate()
     {
         if (!targetObject) return;
-
         bool rotated = false;
 
-        // Mouse drag
         if (Input.GetMouseButton(0))
         {
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
@@ -101,7 +100,6 @@ public class ARWordToggle : MonoBehaviour
             rotated = Mathf.Abs(rotX) > 0.01f || Mathf.Abs(rotY) > 0.01f;
         }
 
-        // Mobile drag
         if (Input.touchCount == 1)
         {
             Touch t = Input.GetTouch(0);
@@ -114,35 +112,41 @@ public class ARWordToggle : MonoBehaviour
             }
         }
 
-        // ✅ Kalau sudah pernah di-rotate sekali saja
         if (rotated && !hasRotated)
         {
             hasRotated = true;
             Debug.Log("✅ Objek sudah di-rotate — panggil maskot ke-3");
 
             if (mascotUIManager != null)
-            {
                 mascotUIManager.OnObjectRotated();
-            }
             else
-            {
                 Debug.LogWarning("⚠️ mascotUIManager belum di-assign di inspector!");
-            }
         }
     }
 
-
+    // 🔄 Tombol untuk menampilkan & berganti bahasa
     public void ToggleLanguage()
     {
-        showingEnglish = !showingEnglish;
-        if (textDisplay)
+        if (!textDisplay) return;
+
+        // Jika teks belum muncul, mulai dari Indonesia
+        if (string.IsNullOrEmpty(textDisplay.text))
+        {
+            textDisplay.text = indoWord;
+            showingEnglish = false;
+        }
+        else
+        {
+            // Toggle antara Indonesia ↔ Inggris
+            showingEnglish = !showingEnglish;
             textDisplay.text = showingEnglish ? englishWord : indoWord;
+        }
     }
 
     public void PlayAudio()
     {
         AudioClip clipToPlay = showingEnglish ? englishAudio : indoAudio;
-        if (clipToPlay != null)
+        if (clipToPlay != null && Camera.main)
             AudioSource.PlayClipAtPoint(clipToPlay, Camera.main.transform.position);
     }
 

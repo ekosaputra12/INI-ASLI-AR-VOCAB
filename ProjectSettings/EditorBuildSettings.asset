@@ -8,5 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Kuis.unity
+    guid: 2464c8f4410f8ec4eab8ee9d01868359
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c1d19ddb075668e48b78b24afc91389c, type: 2}
+  m_UseUCBPForAssetBundles: 0
