@@ -3,7 +3,22 @@ guid: c6d1b10df5339a647950494884d22622
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_Base
+    second: {fileID: 2100000, guid: e6ce5737c9757ef418b44dd19fead6fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_Stripe
+    second: {fileID: 2100000, guid: 559f0d7c12cf85d4b8d5c13b75793df2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_Tape
+    second: {fileID: 2100000, guid: 8a1706a345324624a91fe0d284fd6250, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
