@@ -48,10 +48,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2030175410694105734, guid: 6076df49a2d05ef4cbf5da4b2371a110, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 88306abfe2a9623489b07e3369d2313f, type: 2}
     - target: {fileID: 919132149155446097, guid: 6076df49a2d05ef4cbf5da4b2371a110, type: 3}
       propertyPath: m_Name
       value: Monitor_V2
       objectReference: {fileID: 0}
+    - target: {fileID: 4034242221360071063, guid: 6076df49a2d05ef4cbf5da4b2371a110, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 88306abfe2a9623489b07e3369d2313f, type: 2}
+    - target: {fileID: 4034242221360071063, guid: 6076df49a2d05ef4cbf5da4b2371a110, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e067e7872f23c754fae9985740d4fdfd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
