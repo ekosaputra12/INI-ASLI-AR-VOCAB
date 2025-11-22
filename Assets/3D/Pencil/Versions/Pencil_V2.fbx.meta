@@ -3,7 +3,27 @@ guid: 5eb13d51d09ab554ab940ef11fc72a04
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pencil_Body
+    second: {fileID: 2100000, guid: 6e99ac72e1ce28f4abc432e34084cb33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pencil_Bottom
+    second: {fileID: 2100000, guid: afa49901879f7fb4dafc06084ca619c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pencil_Tip
+    second: {fileID: 2100000, guid: 8be1b88e8af8a034c83fcae838000c12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pencil_Wood
+    second: {fileID: 2100000, guid: e60d8e4fb56497b45868a5ffaad7a9d1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
