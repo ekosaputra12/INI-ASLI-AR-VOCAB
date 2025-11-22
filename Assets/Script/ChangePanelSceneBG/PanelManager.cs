@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PanelManager : MonoBehaviour
 {
-    public CanvasGroup splashGroup;      // CanvasGroup Splash
+    public CanvasGroup splashGroup;
+
     public GameObject panelSplash;
     public GameObject panelCutsceneIntro;
     public GameObject panelMenu;
-    public GameObject panelPilihanMenu;       // PANEL BARU !!!
+    public GameObject panelPilihanMenu;
+    public GameObject panelSettings;
 
     public float fadeDuration = 1.5f;
     public float splashWait = 1.5f;
@@ -23,6 +25,7 @@ public class PanelManager : MonoBehaviour
         panelCutsceneIntro.SetActive(false);
         panelMenu.SetActive(false);
         panelPilihanMenu.SetActive(false);
+        panelSettings.SetActive(false);
 
         splashGroup.alpha = 0;
 
@@ -39,6 +42,7 @@ public class PanelManager : MonoBehaviour
         panelCutsceneIntro.SetActive(true);
         panelMenu.SetActive(false);
         panelPilihanMenu.SetActive(false);
+        panelSettings.SetActive(false);
     }
 
     public void StartMenu()
@@ -46,6 +50,7 @@ public class PanelManager : MonoBehaviour
         panelCutsceneIntro.SetActive(false);
         panelMenu.SetActive(true);
         panelPilihanMenu.SetActive(false);
+        panelSettings.SetActive(false);
     }
 
     public void StartExtraPanel()
@@ -53,6 +58,24 @@ public class PanelManager : MonoBehaviour
         panelCutsceneIntro.SetActive(false);
         panelMenu.SetActive(false);
         panelPilihanMenu.SetActive(true);
+        panelSettings.SetActive(false);
+    }
+
+    public void StartSettings()
+    {
+        panelCutsceneIntro.SetActive(false);
+        panelMenu.SetActive(false);
+        panelPilihanMenu.SetActive(false);
+        panelSettings.SetActive(true);
+    }
+
+    // 🔥 BACK KE HOME / MENU
+    public void BackToHome()
+    {
+        panelCutsceneIntro.SetActive(false);
+        panelMenu.SetActive(false);
+        panelPilihanMenu.SetActive(true);
+        panelSettings.SetActive(false);
     }
 
     IEnumerator FadeCanvasGroup(CanvasGroup cg, float from, float to, float duration)
