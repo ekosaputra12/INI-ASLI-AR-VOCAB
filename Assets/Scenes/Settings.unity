@@ -1478,7 +1478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef7724d37e9dc3459a78d6dbb6c7bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  sceneName: Menu
+  sceneName: PilihMenu
 --- !u!114 &1062206959
 MonoBehaviour:
   m_ObjectHideFlags: 0
