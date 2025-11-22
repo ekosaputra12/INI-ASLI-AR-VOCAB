@@ -3,7 +3,12 @@ guid: 41c9c3e47f5ea574d8c05ab277eb7574
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piring_Base
+    second: {fileID: 2100000, guid: fea6caef9d8e36148a622efc157b406d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
