@@ -3,7 +3,42 @@ guid: c0c05f68b094d1842b93f412e90811ed
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_Base
+    second: {fileID: 2100000, guid: 4ebd0563dec1a6b4f9ef63ba7afc4799, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_Buttons
+    second: {fileID: 2100000, guid: 3ffb6b5351c901b42ac2856ed376fcb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_Camera
+    second: {fileID: 2100000, guid: a923142253d43da449cbe5602f5742bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_Camera__Lens
+    second: {fileID: 2100000, guid: 50eb320900607c34e83dd9eb267d31ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_Flash
+    second: {fileID: 2100000, guid: 352b23ef2e799f448844d760cbaefdd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_HomeBtn
+    second: {fileID: 2100000, guid: 11b2f93954ec0984f98a50e53f622232, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Phone_Screen
+    second: {fileID: 2100000, guid: 7f8a4c5d25c568e4a893b12859a9efc4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
