@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a10f6e96d0f768f4ab3865d3de1484c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1830,10 +1830,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaskotManager
   imageMaskot: {fileID: 1020257844}
   textMaskot: {fileID: 2051514529}
-  ekspresiSemangat: {fileID: 21300000, guid: 494e870dec4a28e419eb7a99f999473f, type: 3}
-  ekspresiSenang: {fileID: 21300000, guid: a10f6e96d0f768f4ab3865d3de1484c5, type: 3}
-  ekspresiSedih: {fileID: 21300000, guid: 2894bbb36baaa48429e805b8d46edecc, type: 3}
+  ekspresiSemangat: {fileID: 21300000, guid: a10f6e96d0f768f4ab3865d3de1484c5, type: 3}
+  ekspresiSenang: {fileID: 21300000, guid: 494e870dec4a28e419eb7a99f999473f, type: 3}
+  ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 4
+  kartuID: A
 --- !u!1 &1727454956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1955,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1866982845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1866982846}
+  m_Layer: 0
+  m_Name: SpawnPointCard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1866982846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866982845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1003, y: 623.16046, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872536344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,6 +2076,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropSlot
   expectedLetter: M
   maskotManager: {fileID: 1552405120}
+--- !u!1 &1890128504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890128506}
+  - component: {fileID: 1890128505}
+  m_Layer: 0
+  m_Name: CardSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1890128505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890128504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15833615ab044f84d9e712539e5621a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardSpawner
+  spawnPoint: {fileID: 1866982846}
+  cards:
+  - id: A
+    prefab: {fileID: 3904351582980917829, guid: f494a3e64ccce2141b22328f20e872bd, type: 3}
+--- !u!4 &1890128506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890128504}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.42855, y: 4.16872, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1896877733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,3 +2866,5 @@ SceneRoots:
   - {fileID: 1727454961}
   - {fileID: 2094866223}
   - {fileID: 1180752747}
+  - {fileID: 1890128506}
+  - {fileID: 1866982846}

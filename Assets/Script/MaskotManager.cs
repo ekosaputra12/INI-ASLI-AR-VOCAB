@@ -17,6 +17,9 @@ public class MaskotManager : MonoBehaviour
     public int totalSlot = 5;
     private int jumlahBenar = 0;
 
+    [Header("ID Kartu Setelah Puzzle Selesai")]
+    public string kartuID;   // HARUS ADA
+
     void Start()
     {
         TampilkanSemangat();
@@ -40,22 +43,29 @@ public class MaskotManager : MonoBehaviour
 
         StopAllCoroutines();
 
-        // Hitung batas setengah dari total slot
         int batasSetengah = Mathf.CeilToInt(totalSlot / 2f);
 
         if (jumlahBenar >= totalSlot)
         {
-            // Semua benar
             StartCoroutine(GantiEkspresi(ekspresiSenang, "🔥 Ajgo bangett!! 🔥"));
+
+            if (!string.IsNullOrEmpty(kartuID))
+            {
+                Debug.Log("Puzzle selesai, spawn kartu: " + kartuID);
+
+                // Spawn kartu flat
+                CardSpawner.Instance?.SpawnCard(kartuID);
+
+                // Tambah ke collection
+                CollectionManager.Instance?.AddToCollection(kartuID);
+            }
         }
         else if (jumlahBenar >= batasSetengah)
         {
-            // Sudah setengah atau lebih
             StartCoroutine(GantiEkspresi(ekspresiSenang, "Yeay! Dikit lagi! 💪"));
         }
         else
         {
-            // Baru mulai, kasih semangat biasa
             StartCoroutine(GantiEkspresi(ekspresiSenang, "Keren! Teruskan ya 😄"));
         }
     }
