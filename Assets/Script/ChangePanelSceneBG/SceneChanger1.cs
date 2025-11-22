@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger1 : MonoBehaviour
+public class PindahPnaeldiscene : MonoBehaviour
 {
     public void GantiSceneKePanel(string namaScene, string panelTujuan)
     {

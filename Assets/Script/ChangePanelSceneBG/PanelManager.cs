@@ -8,8 +8,6 @@ public class PanelManager : MonoBehaviour
     public GameObject panelSplash;
     public GameObject panelCutsceneIntro;
     public GameObject panelMenu;
-    public GameObject panelPilihanMenu;
-    public GameObject panelSettings;
 
     public float fadeDuration = 1.5f;
     public float splashWait = 1.5f;
@@ -21,14 +19,13 @@ public class PanelManager : MonoBehaviour
 
     IEnumerator SplashSequence()
     {
+        // Aktif/nonaktif panel
         panelSplash.SetActive(true);
         panelCutsceneIntro.SetActive(false);
         panelMenu.SetActive(false);
-        panelPilihanMenu.SetActive(false);
-        panelSettings.SetActive(false);
 
+        // Fade in & fade out
         splashGroup.alpha = 0;
-
         yield return StartCoroutine(FadeCanvasGroup(splashGroup, 0, 1, fadeDuration));
         yield return new WaitForSeconds(splashWait);
         yield return StartCoroutine(FadeCanvasGroup(splashGroup, 1, 0, fadeDuration));
@@ -41,41 +38,20 @@ public class PanelManager : MonoBehaviour
         panelSplash.SetActive(false);
         panelCutsceneIntro.SetActive(true);
         panelMenu.SetActive(false);
-        panelPilihanMenu.SetActive(false);
-        panelSettings.SetActive(false);
     }
 
+    // 🎮 Masuk ke menu utama
     public void StartMenu()
     {
         panelCutsceneIntro.SetActive(false);
         panelMenu.SetActive(true);
-        panelPilihanMenu.SetActive(false);
-        panelSettings.SetActive(false);
     }
 
-    public void StartExtraPanel()
-    {
-        panelCutsceneIntro.SetActive(false);
-        panelMenu.SetActive(false);
-        panelPilihanMenu.SetActive(true);
-        panelSettings.SetActive(false);
-    }
-
-    public void StartSettings()
-    {
-        panelCutsceneIntro.SetActive(false);
-        panelMenu.SetActive(false);
-        panelPilihanMenu.SetActive(false);
-        panelSettings.SetActive(true);
-    }
-
-    // 🔥 BACK KE HOME / MENU
+    // 🔙 BACK (jika ada tombol kembali)
     public void BackToHome()
     {
         panelCutsceneIntro.SetActive(false);
-        panelMenu.SetActive(false);
-        panelPilihanMenu.SetActive(true);
-        panelSettings.SetActive(false);
+        panelMenu.SetActive(true);
     }
 
     IEnumerator FadeCanvasGroup(CanvasGroup cg, float from, float to, float duration)
