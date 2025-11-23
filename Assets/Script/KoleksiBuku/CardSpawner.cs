@@ -16,6 +16,7 @@ public class CardSpawner : MonoBehaviour
     {
         public string id;
         public GameObject prefab;
+        public Sprite sprite; // sprite flat untuk UI
     }
 
     private void Awake()
@@ -39,7 +40,7 @@ public class CardSpawner : MonoBehaviour
 
                 GameObject newCard = Instantiate(item.prefab, spawnPoint.position, Quaternion.identity);
 
-                // jalankan animasi scale
+                // jalankan animasi scale pop-in
                 StartCoroutine(ScalePop(newCard));
 
                 return;
@@ -66,5 +67,17 @@ public class CardSpawner : MonoBehaviour
         }
 
         go.transform.localScale = endScale;
+    }
+
+    public Sprite GetCardSprite(string id)
+    {
+        foreach (var item in cards)
+        {
+            if (item.id == id)
+                return item.sprite;
+        }
+
+        Debug.LogWarning("Sprite untuk kartu ID " + id + " tidak ditemukan!");
+        return null;
     }
 }
