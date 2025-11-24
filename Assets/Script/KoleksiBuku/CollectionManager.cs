@@ -12,7 +12,7 @@ public class CollectionManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);   // WAJIB supaya data bertahan
+            DontDestroyOnLoad(gameObject);
 
             LoadCollection();
         }
@@ -21,7 +21,6 @@ public class CollectionManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     public void AddToCollection(string id)
     {
@@ -44,8 +43,10 @@ public class CollectionManager : MonoBehaviour
 
     private void SaveCollection()
     {
-        string json = JsonUtility.ToJson(new Wrapper(koleksi));
+        Wrapper wrapper = new Wrapper(koleksi);
+        string json = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString("koleksi", json);
+        PlayerPrefs.Save();
     }
 
     private void LoadCollection()
@@ -53,15 +54,25 @@ public class CollectionManager : MonoBehaviour
         if (PlayerPrefs.HasKey("koleksi"))
         {
             string json = PlayerPrefs.GetString("koleksi");
-            koleksi = JsonUtility.FromJson<Wrapper>(json).items;
+            Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
+
+            if (wrapper != null && wrapper.items != null)
+                koleksi = wrapper.items;
         }
     }
 
     [System.Serializable]
     private class Wrapper
     {
-        public List<string> items;
-        public Wrapper(List<string> list) { items = list; }
+        public List<string> items = new List<string>();
+
+        // HARUS ADA untuk JsonUtility
+        public Wrapper() { }
+
+        public Wrapper(List<string> list)
+        {
+            items = list;
+        }
     }
 
     public List<string> GetAllCollection()

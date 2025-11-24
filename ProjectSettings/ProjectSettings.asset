@@ -766,7 +766,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: UNITY_PIPELINE_URP
+    Android: 
     Standalone: 
   additionalCompilerArguments: {}
   platformArchitecture: {}

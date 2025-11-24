@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CollectionDisplay : MonoBehaviour
 {
-    [Header("Parent Grid Koleksi")]
+    [Header("Parent Grid Koleksi (Content di ScrollView)")]
     public Transform gridParent;
 
-    [Header("Prefab UI Kartu (Flat)")]
+    [Header("Prefab UI Kartu")]
     public GameObject cardUIPrefab;
 
-    void Start()
+    void OnEnable()
     {
         TampilkanKoleksi();
     }
@@ -17,9 +18,13 @@ public class CollectionDisplay : MonoBehaviour
     {
         if (CollectionManager.Instance == null)
         {
-            Debug.LogError("CollectionManager tidak ditemukan! Pastikan ada di Scene Kuis, dan jangan destroy on load.");
+            Debug.LogError("CollectionManager tidak ditemukan! Pastikan tidak terhapus saat pindah scene.");
             return;
         }
+
+        // 🧹 Bersihkan dulu isi lama
+        foreach (Transform child in gridParent)
+            Destroy(child.gameObject);
 
         var koleksi = CollectionManager.Instance.GetAllCollection();
 
@@ -29,15 +34,23 @@ public class CollectionDisplay : MonoBehaviour
             GameObject obj = Instantiate(cardUIPrefab, gridParent);
 
             RectTransform rt = obj.GetComponent<RectTransform>();
-            rt.anchoredPosition = Vector2.zero;
             rt.localScale = Vector3.one;
             rt.localRotation = Quaternion.identity;
+            rt.anchoredPosition = Vector2.zero;
 
-            // 🔹 Isi gambar kartu
-            var img = obj.GetComponent<UnityEngine.UI.Image>();
+            // 🔹 Masukkan sprite gambar kartu
+            Image img = obj.GetComponent<Image>();
             if (img != null)
             {
-                img.sprite = CardSpawner.Instance.GetCardSprite(id);
+                Sprite s = CardSpawner.Instance.GetCardSprite(id);
+                if (s != null)
+                    img.sprite = s;
+                else
+                    Debug.LogWarning($"Sprite untuk ID {id} tidak ditemukan.");
+            }
+            else
+            {
+                Debug.LogWarning("Prefab UI tidak punya komponen Image!");
             }
         }
     }
