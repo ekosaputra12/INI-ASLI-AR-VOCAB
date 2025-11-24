@@ -1,11 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class CardSpawner : MonoBehaviour
 {
     public static CardSpawner Instance;
 
-    [Header("Tempat Spawn Kartu")]
+    [Header("Overlay Pop-Up (aktif saat kartu muncul)")]
+    public GameObject popupOverlay;
+
+    [Header("Tempat Spawn Kartu (UI / RectTransform)")]
     public Transform spawnPoint;
 
     [Header("List Prefab Kartu Berdasarkan ID")]
@@ -15,8 +18,8 @@ public class CardSpawner : MonoBehaviour
     public class CardItem
     {
         public string id;
-        public GameObject prefab;
-        public Sprite sprite; // sprite flat untuk UI
+        public GameObject prefab;   // Prefab UI (tanpa Canvas)
+        public Sprite sprite;       // Sprite untuk koleksi
     }
 
     private void Awake()
@@ -32,41 +35,61 @@ public class CardSpawner : MonoBehaviour
             return;
         }
 
+        // 🔥 Aktifkan overlay saat kartu muncul
+        if (popupOverlay != null)
+            popupOverlay.SetActive(true);
+
         foreach (var item in cards)
         {
             if (item.id == id)
             {
                 Debug.Log("Spawn kartu: " + id);
 
-                GameObject newCard = Instantiate(item.prefab, spawnPoint.position, Quaternion.identity);
+                // Spawn sebagai child dari spawnPoint
+                GameObject newCard = Instantiate(item.prefab, spawnPoint, false);
 
-                // jalankan animasi scale pop-in
+                RectTransform rt = newCard.GetComponent<RectTransform>();
+                rt.anchoredPosition = Vector2.zero;
+                rt.localScale = Vector3.one;
+                rt.localRotation = Quaternion.identity;
+
                 StartCoroutine(ScalePop(newCard));
-
                 return;
             }
         }
 
-        Debug.LogWarning("Kartu dengan ID: " + id + " tidak ditemukan di CardSpawner!");
+        Debug.LogWarning("Kartu dengan ID: " + id + " tidak ditemukan!");
+    }
+
+    public void ClosePopup()
+    {
+        // Hapus kartu yang muncul
+        foreach (Transform child in spawnPoint)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Matikan overlay
+        popupOverlay.SetActive(false);
     }
 
     private IEnumerator ScalePop(GameObject go)
     {
-        Vector3 startScale = Vector3.zero;
-        Vector3 endScale = Vector3.one;
+        Vector3 start = Vector3.zero;
+        Vector3 end = Vector3.one;
         float duration = 0.35f;
         float t = 0f;
 
-        go.transform.localScale = startScale;
+        go.transform.localScale = start;
 
         while (t < duration)
         {
             t += Time.deltaTime;
-            go.transform.localScale = Vector3.Lerp(startScale, endScale, t / duration);
+            go.transform.localScale = Vector3.Lerp(start, end, t / duration);
             yield return null;
         }
 
-        go.transform.localScale = endScale;
+        go.transform.localScale = end;
     }
 
     public Sprite GetCardSprite(string id)

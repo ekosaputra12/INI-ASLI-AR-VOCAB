@@ -1,29 +1,44 @@
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class CollectionDisplay : MonoBehaviour
 {
-    public Transform gridParent;  // tempat spawn card UI
-    public GameObject cardUIPrefab; // prefab kartu versi UI (flat)
+    [Header("Parent Grid Koleksi")]
+    public Transform gridParent;
+
+    [Header("Prefab UI Kartu (Flat)")]
+    public GameObject cardUIPrefab;
 
     void Start()
     {
-        RefreshCollection();
+        TampilkanKoleksi();
     }
 
-    public void RefreshCollection()
+    void TampilkanKoleksi()
     {
-        foreach (Transform child in gridParent)
+        if (CollectionManager.Instance == null)
         {
-            Destroy(child.gameObject);
+            Debug.LogError("CollectionManager tidak ditemukan! Pastikan ada di Scene Kuis, dan jangan destroy on load.");
+            return;
         }
 
-        foreach (string id in CollectionManager.Instance.collectedCards)
-        {
-            GameObject newCard = Instantiate(cardUIPrefab, gridParent);
+        var koleksi = CollectionManager.Instance.GetAllCollection();
 
-            // set nama atau gambar sesuai ID
-            newCard.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = id;
+        foreach (var id in koleksi)
+        {
+            // 🔹 Buat UI kartu baru
+            GameObject obj = Instantiate(cardUIPrefab, gridParent);
+
+            RectTransform rt = obj.GetComponent<RectTransform>();
+            rt.anchoredPosition = Vector2.zero;
+            rt.localScale = Vector3.one;
+            rt.localRotation = Quaternion.identity;
+
+            // 🔹 Isi gambar kartu
+            var img = obj.GetComponent<UnityEngine.UI.Image>();
+            if (img != null)
+            {
+                img.sprite = CardSpawner.Instance.GetCardSprite(id);
+            }
         }
     }
 }
