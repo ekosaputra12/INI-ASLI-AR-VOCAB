@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using TMPro;
+using Vuforia;
 
 public class ARWordToggle : MonoBehaviour
 {
+    // ⭐ Target aktif global
+    public static ARWordToggle activeTarget;
+
     [Header("Bahasa Indonesia")]
     public string indoWord = "Meja";
     public AudioClip indoAudio;
@@ -23,7 +27,7 @@ public class ARWordToggle : MonoBehaviour
     public bool enableSmooth = true;
     public float smoothSpeed = 10f;
 
-    private bool showingEnglish = false; // mulai dari Indonesia
+    private bool showingEnglish = false;
     private Vector3 initialScale;
     private Quaternion initialRotation;
     private Vector3 targetScale;
@@ -35,7 +39,11 @@ public class ARWordToggle : MonoBehaviour
 
     void Start()
     {
-        // ⛔ Tidak tampil teks di awal
+        // daftar event Vuforia
+        var observer = GetComponent<ObserverBehaviour>();
+        if (observer != null)
+            observer.OnTargetStatusChanged += OnStatusChanged;
+
         if (textDisplay)
             textDisplay.text = "";
 
@@ -46,6 +54,15 @@ public class ARWordToggle : MonoBehaviour
             initialRotation = targetObject.rotation;
             targetRotation = initialRotation;
         }
+    }
+
+    // 🔥 Vuforia panggil ini otomatis
+    void OnStatusChanged(ObserverBehaviour behaviour, TargetStatus status)
+    {
+        if (status.Status == Status.TRACKED || status.Status == Status.EXTENDED_TRACKED)
+            OnTargetFound();
+        else
+            OnTargetLost();
     }
 
     void Update()
@@ -59,6 +76,66 @@ public class ARWordToggle : MonoBehaviour
             targetObject.rotation = Quaternion.Lerp(targetObject.rotation, targetRotation, Time.deltaTime * smoothSpeed);
         }
     }
+
+    // 🔥 tombol Translate selalu baca target aktif
+    public void ToggleLanguage()
+    {
+        if (activeTarget != this) return;
+        if (!textDisplay) return;
+
+        if (string.IsNullOrEmpty(textDisplay.text))
+        {
+            showingEnglish = false;
+            textDisplay.text = indoWord;
+            return;
+        }
+
+        showingEnglish = !showingEnglish;
+        textDisplay.text = showingEnglish ? englishWord : indoWord;
+    }
+
+    public void PlayAudio()
+    {
+        if (activeTarget != this) return;
+
+        AudioClip clip = showingEnglish ? englishAudio : indoAudio;
+        if (clip != null)
+            AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+    }
+
+    public void ResetTransform()
+    {
+        if (!targetObject) return;
+        targetScale = initialScale;
+        targetRotation = initialRotation;
+        hasRotated = false;
+    }
+
+    // ⭐ INI KUNCI
+    public void OnTargetFound()
+    {
+        activeTarget = this;
+        showingEnglish = false;
+
+        if (textDisplay)
+            textDisplay.text = indoWord;
+
+        if (mascotUIManager != null)
+            mascotUIManager.OnTargetFound();
+    }
+
+    public void OnTargetLost()
+    {
+        if (activeTarget == this)
+            activeTarget = null;
+
+        if (textDisplay)
+            textDisplay.text = "";
+    }
+
+    // ==========================
+    // ZOOM & ROTATE (tidak diubah)
+    // ==========================
 
     private void HandleZoom()
     {
@@ -82,8 +159,8 @@ public class ARWordToggle : MonoBehaviour
         {
             float scaleFactor = 1 + scroll * zoomSpeed;
             targetScale = targetObject.localScale * scaleFactor;
-            float scaleClamp = Mathf.Clamp(targetScale.magnitude, initialScale.magnitude * minZoom, initialScale.magnitude * maxZoom);
-            targetScale = targetScale.normalized * scaleClamp;
+            float clamped = Mathf.Clamp(targetScale.magnitude, initialScale.magnitude * minZoom, initialScale.magnitude * maxZoom);
+            targetScale = targetScale.normalized * clamped;
         }
     }
 
@@ -97,7 +174,7 @@ public class ARWordToggle : MonoBehaviour
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float rotY = -Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
             targetRotation *= Quaternion.Euler(rotY, -rotX, 0);
-            rotated = Mathf.Abs(rotX) > 0.01f || Mathf.Abs(rotY) > 0.01f;
+            rotated = true;
         }
 
         if (Input.touchCount == 1)
@@ -115,46 +192,8 @@ public class ARWordToggle : MonoBehaviour
         if (rotated && !hasRotated)
         {
             hasRotated = true;
-            Debug.Log("✅ Objek sudah di-rotate — panggil maskot ke-3");
-
             if (mascotUIManager != null)
                 mascotUIManager.OnObjectRotated();
-            else
-                Debug.LogWarning("⚠️ mascotUIManager belum di-assign di inspector!");
         }
-    }
-
-    // 🔄 Tombol untuk menampilkan & berganti bahasa
-    public void ToggleLanguage()
-    {
-        if (!textDisplay) return;
-
-        // Jika teks belum muncul, mulai dari Indonesia
-        if (string.IsNullOrEmpty(textDisplay.text))
-        {
-            textDisplay.text = indoWord;
-            showingEnglish = false;
-        }
-        else
-        {
-            // Toggle antara Indonesia ↔ Inggris
-            showingEnglish = !showingEnglish;
-            textDisplay.text = showingEnglish ? englishWord : indoWord;
-        }
-    }
-
-    public void PlayAudio()
-    {
-        AudioClip clipToPlay = showingEnglish ? englishAudio : indoAudio;
-        if (clipToPlay != null && Camera.main)
-            AudioSource.PlayClipAtPoint(clipToPlay, Camera.main.transform.position);
-    }
-
-    public void ResetTransform()
-    {
-        if (!targetObject) return;
-        targetScale = initialScale;
-        targetRotation = initialRotation;
-        hasRotated = false;
     }
 }
