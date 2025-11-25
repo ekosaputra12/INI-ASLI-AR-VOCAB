@@ -9,7 +9,7 @@ public class ARRotateZoom : MonoBehaviour
 
     void Update()
     {
-        // ROTATE (1 jari)
+        // --- ROTATE with Touch (1 Finger) ---
         if (Input.touchCount == 1)
         {
             Touch t = Input.GetTouch(0);
@@ -20,7 +20,7 @@ public class ARRotateZoom : MonoBehaviour
             }
         }
 
-        // ZOOM (2 jari)
+        // --- ZOOM with Touch (2 Fingers) ---
         if (Input.touchCount == 2)
         {
             Touch t0 = Input.GetTouch(0);
@@ -34,6 +34,21 @@ public class ARRotateZoom : MonoBehaviour
             scale = Vector3.Max(scale, Vector3.one * minScale);
             scale = Vector3.Min(scale, Vector3.one * maxScale);
             transform.localScale = scale;
+        }
+
+        // --- ROTATE with Mouse (Right Click + Drag) ---
+        if (Input.GetMouseButton(1)) // mouse right button
+        {
+            float rotX = Input.GetAxis("Mouse X") * rotateSpeed * 10f;
+            transform.Rotate(Vector3.up, -rotX, Space.World);
+        }
+
+        // --- ZOOM with Mouse Scroll Wheel ---
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (Mathf.Abs(scroll) > 0.01f)
+        {
+            float scale = Mathf.Clamp(transform.localScale.x + scroll * zoomSpeed * 50f, minScale, maxScale);
+            transform.localScale = Vector3.one * scale;
         }
     }
 }
