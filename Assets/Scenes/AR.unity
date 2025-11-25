@@ -2771,7 +2771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.954529, y: -5.0737915}
+  m_AnchoredPosition: {x: -4.95459, y: -5.0737915}
   m_SizeDelta: {x: -7.4321, y: -9.2118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1287113332
@@ -4212,13 +4212,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: images
+  mTrackableName: Palu
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/EkoAr-12Database.xml
-  mAspectRatio: 1
+  mDataSetPath: Vuforia/ARUTS.xml
+  mAspectRatio: 1.7782199
   mImageTargetType: 0
-  mWidth: 100
-  mHeight: 100
+  mWidth: 0.1
+  mHeight: 0.177822
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -4279,8 +4279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.ImageTargetPreview
   mObserverBehaviour: {fileID: 2094866222}
   mHiddenRoot: {fileID: 0}
-  mTargetName: images
-  mDatasetName: Vuforia/EkoAr-12Database.xml
+  mTargetName: Palu
+  mDatasetName: Vuforia/ARUTS.xml
   mCastedBehaviour: {fileID: 2094866222}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
