@@ -4371,7 +4371,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1716894721707293649}
-  - component: {fileID: 2060522224291111276}
   m_Layer: 0
   m_Name: Book_V3
   m_TagString: Untagged
@@ -4379,22 +4378,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2060522224291111276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060522224291111275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5634fc89f519ec6438fafb9297cdd96e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ARRotateZoom
-  rotateSpeed: 5
-  zoomSpeed: 0.01
-  minScale: 0.3
-  maxScale: 2
 --- !u!1 &4637584605364121264
 GameObject:
   m_ObjectHideFlags: 0
