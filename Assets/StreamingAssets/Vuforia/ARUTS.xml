@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="Palu" size="0.100000 0.177822" />
+    <ImageTarget name="Kunci" size="0.100000 0.177822" />
+    <ImageTarget name="Penghapus" size="0.100000 0.177822" />
+    <ImageTarget name="AnakPanah" size="0.100000 0.177822" />
+    <ImageTarget name="Buku" size="0.100000 0.177822" />
+    <ImageTarget name="1_rgb" size="0.100000 0.177845" />
+  </Tracking>
+</QCARConfig>
