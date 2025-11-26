@@ -379,7 +379,6 @@ GameObject:
   m_Component:
   - component: {fileID: 526912376}
   - component: {fileID: 526912377}
-  - component: {fileID: 526912378}
   m_Layer: 5
   m_Name: SliderMasterVolume
   m_TagString: Untagged
@@ -459,20 +458,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &526912378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526912375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ccd750c59fe914087907dad63bc468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BGMSVolumeSlider
-  slider: {fileID: 526912377}
+      m_Calls:
+      - m_Target: {fileID: 1703390428}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &528131328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1310,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1703390427}
+        m_TargetAssemblyTypeName: Audio_Manager, Assembly-CSharp
+        m_MethodName: OnClick_BtnSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1012627980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1465,7 @@ GameObject:
   - component: {fileID: 1062206959}
   - component: {fileID: 1062206958}
   m_Layer: 5
-  m_Name: Home
+  m_Name: BackHomeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1542,6 +1552,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1062206958}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1703390427}
+        m_TargetAssemblyTypeName: Audio_Manager, Assembly-CSharp
+        m_MethodName: OnClick_BtnSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2120,7 +2142,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1703390429}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1359713117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master Volume
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2aa0ee9284e86a1459e55fbedc0e3553, type: 2}
   m_sharedMaterial: {fileID: -766773789308747448, guid: 2aa0ee9284e86a1459e55fbedc0e3553, type: 2}
@@ -2448,6 +2482,92 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499463117}
   m_CullTransparentMesh: 1
+--- !u!1001 &1703390426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 994.83093
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 550.5251
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753513253025764844, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 1415a9f2047aeb64e914ec745813d947, type: 2}
+    - target: {fileID: 2779675316676477735, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730373324630632861, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 1415a9f2047aeb64e914ec745813d947, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+--- !u!114 &1703390427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8628919774811133045, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+  m_PrefabInstance: {fileID: 1703390426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5ae4e5bf946d84aa6a13497a04a124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Audio_Manager
+--- !u!82 &1703390428 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 753513253025764844, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+  m_PrefabInstance: {fileID: 1703390426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1703390429 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5730373324630632861, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+  m_PrefabInstance: {fileID: 1703390426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1723652982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,9 +3200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Music
-
-'
+  m_text: SFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2aa0ee9284e86a1459e55fbedc0e3553, type: 2}
   m_sharedMaterial: {fileID: -766773789308747448, guid: 2aa0ee9284e86a1459e55fbedc0e3553, type: 2}
@@ -3169,3 +3287,4 @@ SceneRoots:
   - {fileID: 2072103626}
   - {fileID: 1275425252}
   - {fileID: 2042345166}
+  - {fileID: 1703390426}

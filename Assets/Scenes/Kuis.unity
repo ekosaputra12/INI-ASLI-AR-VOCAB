@@ -1803,6 +1803,18 @@ MonoBehaviour:
           m_StringArgument: PilihMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 358182644}
+        m_TargetAssemblyTypeName: Audio_Manager, Assembly-CSharp
+        m_MethodName: OnClick_BtnSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &116502787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3918,6 +3930,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356581105}
   m_CullTransparentMesh: 1
+--- !u!1001 &358182643
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2042.5509
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 165.98389
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84780647783148253, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779675316676477735, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+--- !u!114 &358182644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8628919774811133045, guid: 939479a47d47e7644a14da9a36af38b7, type: 3}
+  m_PrefabInstance: {fileID: 358182643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5ae4e5bf946d84aa6a13497a04a124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Audio_Manager
 --- !u!1 &366336467
 GameObject:
   m_ObjectHideFlags: 0
@@ -9181,6 +9261,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Koleksi
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 358182644}
+        m_TargetAssemblyTypeName: Audio_Manager, Assembly-CSharp
+        m_MethodName: OnClick_BtnSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &957494778
@@ -14859,6 +14951,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc11aa8910b8e5469938c69be77cc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
+  audioSource: {fileID: 0}
+  clickSound: {fileID: 0}
 --- !u!4 &1626588130
 Transform:
   m_ObjectHideFlags: 0
@@ -20746,3 +20840,4 @@ SceneRoots:
   - {fileID: 1934684101}
   - {fileID: 1639710002}
   - {fileID: 1515315997}
+  - {fileID: 358182643}
