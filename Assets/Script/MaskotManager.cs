@@ -18,7 +18,10 @@ public class MaskotManager : MonoBehaviour
     private int jumlahBenar = 0;
 
     [Header("ID Kartu Setelah Puzzle Selesai")]
-    public string kartuID;   // HARUS ADA
+    public string kartuID;
+
+    [Header("Handler Vuforia Card")]
+    public VuforiaCardHandler handler;   // 🔥 drag image target ke field ini di Inspector
 
     void Start()
     {
@@ -40,7 +43,6 @@ public class MaskotManager : MonoBehaviour
     public void HurufBenar()
     {
         jumlahBenar++;
-
         StopAllCoroutines();
 
         int batasSetengah = Mathf.CeilToInt(totalSlot / 2f);
@@ -53,11 +55,15 @@ public class MaskotManager : MonoBehaviour
             {
                 Debug.Log("Puzzle selesai, spawn kartu: " + kartuID);
 
-                // Spawn kartu flat
-                CardSpawner.Instance?.SpawnCard(kartuID);
-
-                // Tambah ke collection
-                CollectionManager.Instance?.AddToCollection(kartuID);
+                if (handler != null && handler.targetDetected)
+                {
+                    CardSpawner.Instance?.SpawnCard(kartuID);
+                    CollectionManager.Instance?.AddToCollection(kartuID);
+                }
+                else
+                {
+                    Debug.Log("Puzzle benar, tapi target belum discan");
+                }
             }
         }
         else if (jumlahBenar >= batasSetengah)

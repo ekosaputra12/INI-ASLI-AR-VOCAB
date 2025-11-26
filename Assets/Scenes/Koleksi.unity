@@ -4730,7 +4730,7 @@ MonoBehaviour:
     prefabUI: {fileID: 2008119024167927948, guid: 182fff45beca345429f6b7974dbcf446, type: 3}
   - id: BB
     prefabUI: {fileID: 2008119024167927948, guid: 7fafd42850dfa244dbbd8de73171bb52, type: 3}
-  - id: PP
+  - id: PALU
     prefabUI: {fileID: 2008119024167927948, guid: 3b760c54d78e6904f9e03a0997d01fe3, type: 3}
 --- !u!4 &1964668595
 Transform:

@@ -1806,7 +1806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1239.79, y: -556}
+  m_AnchoredPosition: {x: 988.79004, y: -556}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116502786
@@ -4451,6 +4451,7 @@ MonoBehaviour:
   ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 4
   kartuID: B
+  handler: {fileID: 764953684}
 --- !u!1 &436872698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5993,7 +5994,8 @@ GameObject:
   - component: {fileID: 581967927}
   - component: {fileID: 581967926}
   - component: {fileID: 581967925}
-  - component: {fileID: 581967930}
+  - component: {fileID: 581967931}
+  - component: {fileID: 581967932}
   m_Layer: 0
   m_Name: ImageTarget_Penghapus
   m_TagString: Untagged
@@ -6034,7 +6036,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581967923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
@@ -6097,7 +6099,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 581967930}
+  mPreview: {fileID: 581967932}
 --- !u!4 &581967929
 Transform:
   m_ObjectHideFlags: 0
@@ -6115,7 +6117,21 @@ Transform:
   - {fileID: 1042492102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &581967930
+--- !u!114 &581967931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581967923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b1f64bb8019064f89f97ef6c7cf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VuforiaCardHandler
+  cardID: P
+  targetDetected: 0
+--- !u!114 &581967932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6706,7 +6722,7 @@ RectTransform:
   m_GameObject: {fileID: 650080873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8910972, y: 0.86724186, z: 0.9685523}
+  m_LocalScale: {x: 0.9793158, y: 0.9530988, z: 1.0644389}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1473839689}
@@ -6719,7 +6735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 131}
+  m_AnchoredPosition: {x: 0, y: 113}
   m_SizeDelta: {x: 1315.4, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650080875
@@ -7590,6 +7606,7 @@ MonoBehaviour:
   ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 3
   kartuID: K
+  handler: {fileID: 0}
 --- !u!1 &764953676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7603,7 +7620,8 @@ GameObject:
   - component: {fileID: 764953680}
   - component: {fileID: 764953679}
   - component: {fileID: 764953677}
-  - component: {fileID: 764953683}
+  - component: {fileID: 764953684}
+  - component: {fileID: 764953685}
   m_Layer: 0
   m_Name: ImageTarget_Buku
   m_TagString: Untagged
@@ -7644,7 +7662,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764953676}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
@@ -7707,7 +7725,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 764953683}
+  mPreview: {fileID: 764953685}
 --- !u!4 &764953682
 Transform:
   m_ObjectHideFlags: 0
@@ -7725,7 +7743,21 @@ Transform:
   - {fileID: 347865729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &764953683
+--- !u!114 &764953684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764953676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b1f64bb8019064f89f97ef6c7cf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VuforiaCardHandler
+  cardID: B
+  targetDetected: 0
+--- !u!114 &764953685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9226,6 +9258,7 @@ MonoBehaviour:
   ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 6
   kartuID: BB
+  handler: {fileID: 0}
 --- !u!1 &954300227
 GameObject:
   m_ObjectHideFlags: 0
@@ -9398,7 +9431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1019, y: -556}
+  m_AnchoredPosition: {x: 768, y: -556}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957494777
@@ -13401,6 +13434,7 @@ MonoBehaviour:
   ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 6
   kartuID: P
+  handler: {fileID: 0}
 --- !u!1 &1461675437
 GameObject:
   m_ObjectHideFlags: 0
@@ -13414,7 +13448,8 @@ GameObject:
   - component: {fileID: 1461675441}
   - component: {fileID: 1461675440}
   - component: {fileID: 1461675439}
-  - component: {fileID: 1461675444}
+  - component: {fileID: 1461675445}
+  - component: {fileID: 1461675446}
   m_Layer: 0
   m_Name: ImageTarget_Kunci
   m_TagString: Untagged
@@ -13455,7 +13490,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461675437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
@@ -13518,7 +13553,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1461675444}
+  mPreview: {fileID: 1461675446}
 --- !u!4 &1461675443
 Transform:
   m_ObjectHideFlags: 0
@@ -13536,7 +13571,21 @@ Transform:
   - {fileID: 23061299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1461675444
+--- !u!114 &1461675445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461675437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b1f64bb8019064f89f97ef6c7cf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VuforiaCardHandler
+  cardID: K
+  targetDetected: 0
+--- !u!114 &1461675446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13749,6 +13798,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478608494}
   m_CullTransparentMesh: 1
+--- !u!1 &1484897802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484897804}
+  - component: {fileID: 1484897803}
+  m_Layer: 0
+  m_Name: RESET
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1484897803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484897802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01234551ac001354cb00bb73722ad9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetPrefs
+--- !u!4 &1484897804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484897802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1488.7998, y: 0, z: 8507.685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1489963268
 GameObject:
   m_ObjectHideFlags: 0
@@ -14716,6 +14809,7 @@ MonoBehaviour:
   ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 5
   kartuID: A
+  handler: {fileID: 2091718955}
 --- !u!1 &1570941545
 GameObject:
   m_ObjectHideFlags: 0
@@ -15194,7 +15288,8 @@ GameObject:
   - component: {fileID: 1639710000}
   - component: {fileID: 1639709999}
   - component: {fileID: 1639709998}
-  - component: {fileID: 1639710003}
+  - component: {fileID: 1639710004}
+  - component: {fileID: 1639710005}
   m_Layer: 0
   m_Name: ImageTarget_Palu
   m_TagString: Untagged
@@ -15235,7 +15330,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639709996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
@@ -15298,7 +15393,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1639710003}
+  mPreview: {fileID: 1639710005}
 --- !u!4 &1639710002
 Transform:
   m_ObjectHideFlags: 0
@@ -15316,7 +15411,21 @@ Transform:
   - {fileID: 655621836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1639710003
+--- !u!114 &1639710004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639709996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b1f64bb8019064f89f97ef6c7cf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VuforiaCardHandler
+  cardID: PA
+  targetDetected: 0
+--- !u!114 &1639710005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15641,6 +15750,7 @@ MonoBehaviour:
   ekspresiSedih: {fileID: 21300000, guid: f3ff4785a7bab5a4e9811b2fb61ccbe3, type: 3}
   totalSlot: 6
   kartuID: PA
+  handler: {fileID: 0}
 --- !u!1 &1684218223
 GameObject:
   m_ObjectHideFlags: 0
@@ -17275,7 +17385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197, y: 83.16052}
+  m_AnchoredPosition: {x: 93, y: 114}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1866982847
@@ -18059,7 +18169,8 @@ GameObject:
   - component: {fileID: 1934684099}
   - component: {fileID: 1934684098}
   - component: {fileID: 1934684097}
-  - component: {fileID: 1934684102}
+  - component: {fileID: 1934684103}
+  - component: {fileID: 1934684104}
   m_Layer: 0
   m_Name: ImageTarget_Botol
   m_TagString: Untagged
@@ -18100,7 +18211,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934684095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
@@ -18163,7 +18274,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1934684102}
+  mPreview: {fileID: 1934684104}
 --- !u!4 &1934684101
 Transform:
   m_ObjectHideFlags: 0
@@ -18181,7 +18292,21 @@ Transform:
   - {fileID: 831582646}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1934684102
+--- !u!114 &1934684103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934684095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b1f64bb8019064f89f97ef6c7cf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VuforiaCardHandler
+  cardID: BB
+  targetDetected: 0
+--- !u!114 &1934684104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19394,7 +19519,8 @@ GameObject:
   - component: {fileID: 2091718952}
   - component: {fileID: 2091718951}
   - component: {fileID: 2091718950}
-  - component: {fileID: 2091718954}
+  - component: {fileID: 2091718955}
+  - component: {fileID: 2091718956}
   m_Layer: 0
   m_Name: ImageTarget_Panah
   m_TagString: Untagged
@@ -19422,7 +19548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091718949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
@@ -19485,7 +19611,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 2091718954}
+  mPreview: {fileID: 2091718956}
 --- !u!4 &2091718953
 Transform:
   m_ObjectHideFlags: 0
@@ -19503,7 +19629,21 @@ Transform:
   - {fileID: 981964260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2091718954
+--- !u!114 &2091718955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091718949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b1f64bb8019064f89f97ef6c7cf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VuforiaCardHandler
+  cardID: A
+  targetDetected: 0
+--- !u!114 &2091718956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20265,6 +20405,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1484897804}
   - {fileID: 705507995}
   - {fileID: 1727454961}
   - {fileID: 2094866223}
