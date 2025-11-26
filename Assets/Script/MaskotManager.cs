@@ -49,7 +49,7 @@ public class MaskotManager : MonoBehaviour
 
         if (jumlahBenar >= totalSlot)
         {
-            StartCoroutine(GantiEkspresi(ekspresiSenang, "🔥 Ajgo bangett!! 🔥"));
+            StartCoroutine(GantiEkspresi(ekspresiSenang, "Kamu Jagoo Bangettt"));
 
             if (!string.IsNullOrEmpty(kartuID))
             {
@@ -68,18 +68,18 @@ public class MaskotManager : MonoBehaviour
         }
         else if (jumlahBenar >= batasSetengah)
         {
-            StartCoroutine(GantiEkspresi(ekspresiSenang, "Yeay! Dikit lagi! 💪"));
+            StartCoroutine(GantiEkspresi(ekspresiSenang, "Yeay Dikit lagi"));
         }
         else
         {
-            StartCoroutine(GantiEkspresi(ekspresiSenang, "Keren! Teruskan ya 😄"));
+            StartCoroutine(GantiEkspresi(ekspresiSenang, "Kerenn Teruskan ya"));
         }
     }
 
     public void HurufSalah()
     {
         StopAllCoroutines();
-        StartCoroutine(GantiEkspresi(ekspresiSedih, "Kamu salah, coba lagi ya 😅"));
+        StartCoroutine(GantiEkspresi(ekspresiSedih, "Kamu salah, coba lagi ya"));
     }
 
     private IEnumerator GantiEkspresi(Sprite spriteBaru, string teks)
