@@ -4892,7 +4892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32c1e0a1fa2d0f4db7a1960fcfcaffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectionDisplay
-  gridParent: {fileID: 0}
+  gridParent: {fileID: 1171356270}
   uiPrefabs:
   - id: A
     prefabUI: {fileID: 2008119024167927948, guid: b4abd037c9a4ad245ab76cec8d4ccdcc, type: 3}
