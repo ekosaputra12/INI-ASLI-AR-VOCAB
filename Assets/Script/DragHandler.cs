@@ -4,6 +4,9 @@ using System.Collections;
 
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [Header("Huruf yang dibawa object ini")]
+    public string letter;
+
     [HideInInspector] public Transform parentAsal;
     [HideInInspector] public Vector3 posisiAwal;
 
@@ -20,15 +23,14 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Simpan posisi & parent asal
         parentAsal = transform.parent;
         posisiAwal = rectTransform.anchoredPosition;
 
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
 
-        // Pindah ke atas layer lain biar nggak ketutupan
-        transform.SetParent(canvas.transform);
+        // Pindah ke layer tertinggi agar tidak tertutup UI
+        transform.SetParent(canvas.transform, true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -44,7 +46,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void KembaliKeAsal(bool animasi = true)
     {
-        transform.SetParent(parentAsal);
+        transform.SetParent(parentAsal, true);
+
         if (animasi)
             StartCoroutine(AnimasiBalik());
         else
@@ -55,9 +58,9 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         Vector3 startPos = rectTransform.anchoredPosition;
         float waktu = 0f;
-        while (waktu < 0.25f)
+        while (waktu < 1f)
         {
-            waktu += Time.deltaTime * 4f; // kecepatan animasi
+            waktu += Time.deltaTime * 4f;
             rectTransform.anchoredPosition = Vector3.Lerp(startPos, posisiAwal, waktu);
             yield return null;
         }

@@ -16,20 +16,22 @@ public class DropSlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag == null) return;
 
         GameObject draggedObj = eventData.pointerDrag;
-        string draggedLetter = draggedObj.name.Replace("Image_", "");
         DragHandler dragHandler = draggedObj.GetComponent<DragHandler>();
 
-        // Jika slot sudah terisi, abaikan
+        string draggedLetter = dragHandler.letter.Trim().ToUpper();
+        string expected = expectedLetter.Trim().ToUpper();
+
+        // Jika slot sudah terisi
         if (transform.childCount > 0)
         {
             dragHandler.KembaliKeAsal(true);
             return;
         }
 
-        if (draggedLetter == expectedLetter)
+        if (draggedLetter == expected)
         {
             // BENAR
-            draggedObj.transform.SetParent(transform);
+            draggedObj.transform.SetParent(transform, false);
             draggedObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
             if (!sudahBenar)
