@@ -5,6 +5,8 @@ public class VuforiaCardHandler : MonoBehaviour
 {
     public string cardID;
 
+
+
     private ObserverBehaviour observer;
 
     // Status apakah target sudah terdeteksi
